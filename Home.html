@@ -7,7 +7,30 @@
     </head>
 
 
+            
+
     <body>
+        <div id="jobFormPopup" class="job-form-popup" style="display: none;">
+        <div class="job-form-container">
+            <h2>Add New Job</h2>
+            <label>Company Name: <input type="text" id="companyInput" required></label>
+            <label>Job Position: <input type="text" id="positionInput" required></label>
+            
+            <label>Company Logo: <input type="file" id="imageInput" accept="image/*"></label>
+            <div class="image-preview" id="imagePreview">
+                <span>Image Preview</span>
+            </div>
+            
+            <label><input type="checkbox" id="isNewInput"> Is New?</label>
+            <label><input type="checkbox" id="isFeaturedInput"> Is Featured?</label>
+            <label>Posted: <input type="text" id="postedInput" placeholder="e.g., Today"></label>
+            <label>Time: <input type="text" id="timeInput" placeholder="Full Time / Part Time"></label>
+            <label>Location: <input type="text" id="locationInput" placeholder="Remote / USA only"></label>
+            <label>Tags (comma separated): <input type="text" id="tagsInput" placeholder="Frontend, Junior, CSS"></label>
+            <button id="submitJobBtn">Add Job</button>
+            <button id="cancelJobBtn">Cancel</button>
+        </div>
+    </div>
         <header class="header"></header>
         <div class="top-color">
             <div class="wave-1"></div>
@@ -16,13 +39,17 @@
         <form class="search-form">
             <input type="text" class="search-input" placeholder="Search your dream job...">
             <input type="reset" class="clear-input" value="Clear"> 
+            <button id="add" class="plus" type="button">+</button>
         </form>
 
         <div class="container">
+            
 
             <div class="jobs">
+                
 
                 <div class="jobList">
+                    
                     <div class="image">
                         <img src="./images/photosnap.svg" alt="Photosnap" class="photosnap-image">
                     </div>
@@ -333,14 +360,11 @@
 
                     
                 </div>
-
-                
-
-
             </div>
 
         </div>
 
+        <script src="Main.js"></script>
 
     </body>
 </html>
