@@ -13,44 +13,47 @@ class Add {
         this.cancelJobBtn.addEventListener('click', () => this.hideForm());
         this.imageInput.addEventListener('change', () => this.previewImage());
         this.submitJobBtn.addEventListener('click', () => this.handleSubmit());
+        this.searchInput = document.querySelector('.search-input');
+        this.searchInput.addEventListener('input', () => this.search());
     }
+    
 
     addJobCard(cardData) {
-        const addCard = document.createElement('div');
-        addCard.className = 'jobList';
+    const addCard = document.createElement('div');
+    addCard.className = 'jobList';
 
-        addCard.innerHTML = `
-            <div class="image">
-                <img src="${cardData.image}" alt="${cardData.company}" class="photosnap-image">
+    addCard.innerHTML = `
+        <div class="image">
+            <img src="${cardData.image}" alt="${cardData.company}" class="photosnap-image">
+        </div>
+        <div class="photosnap-details">
+            <div class="photosnap-first">
+                <h3 class="photosnap-name">${cardData.company}</h3>
+                ${cardData.isNew ? '<span class="photosnap-new">NEW!</span>' : ''}
+                ${cardData.isFeatured ? '<span class="photosnap-featured">FEATURED</span>' : ''}
             </div>
-            <div class="photosnap-details">
-                <div class="photosnap-first">
-                    <h3 class="photosnap-name">${cardData.company}</h3>
-                    ${cardData.isNew ? '<span class="photosnap-new">NEW!</span>' : ''}
-                    ${cardData.isFeatured ? '<span class="photosnap-featured">FEATURED</span>' : ''}
-                </div>
-                <div class="photosnap-second">
-                    <h2 class="photosnap-job">${cardData.position}</h2>
-                </div>
-                <div class="photosnap-fourth">
-                    <ul>
-                        <li class="photosnap-day">${cardData.posted}</li>
-                        <li class="photosnap-time">${cardData.time}</li>
-                        <li class="photosnap-country">${cardData.location}</li>
-                    </ul>
-                </div>
+            <div class="photosnap-second">
+                <h2 class="photosnap-job">${cardData.position}</h2>
             </div>
-            <div class="photosnap-fifth"></div>`;
+            <div class="photosnap-fourth">
+                <ul>
+                    <li class="photosnap-day">${cardData.posted}</li>
+                    <li class="photosnap-time">${cardData.time}</li>
+                    <li class="photosnap-country">${cardData.location}</li>
+                </ul>
+            </div>
+        </div>
+        <div class="photosnap-fifth"></div>`;
 
-        const tagsContainer = addCard.querySelector('.photosnap-fifth');
-        for (let i = 0; i < cardData.tags.length; i++) {
-            const btn = document.createElement('button');
-            btn.textContent = cardData.tags[i];
-            tagsContainer.appendChild(btn);
-        }
-
-        this.container.appendChild(addCard);
+    const tagsContainer = addCard.querySelector('.photosnap-fifth');
+    for (let i = 0; i < cardData.tags.length; i++) {
+        const btn = document.createElement('button');
+        btn.textContent = cardData.tags[i];
+        tagsContainer.appendChild(btn);
     }
+
+    this.container.insertBefore(addCard, this.container.firstChild);
+}
 
     showForm() {
         this.jobFormPopup.style.display = 'flex';
@@ -131,6 +134,17 @@ class Add {
         document.getElementById('locationInput').value = '';
         document.getElementById('tagsInput').value = '';
         this.imagePreview.innerHTML = '<span>Image Preview</span>';
+    }
+    search(){
+        const query = this.searchInput.value.toLowerCase();
+        Array.from(this.container.children).forEach(card => {
+            const company = card.querySelector('.photosnap-name').textContent.toLowerCase();
+            if(company.includes(query)){
+                card.style.display='';
+            }else{
+                card.style.display='none';
+            }
+        });
     }
 }
 

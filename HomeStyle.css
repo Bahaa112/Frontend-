@@ -178,3 +178,110 @@ ul li:first-child::before {
     max-width: 400px;
     width: 90%;
 }
+
+#jobFormPopup {
+    display: none; 
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Compact form container */
+.job-form-container {
+    background-color: #fff;
+    padding: 20px 25px;
+    border-radius: 8px;
+    width: 400px;
+    max-width: 90%;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Heading */
+.job-form-container h2 {
+    text-align: center;
+    margin-bottom: 15px;
+    color: #333;
+    font-size: 20px;
+}
+
+/* Labels and inputs */
+.job-form-container label {
+    font-weight: 600;
+    font-size: 13px;
+    color: #555;
+}
+
+.job-form-container input[type="text"],
+.job-form-container input[type="file"],
+.job-form-container select {
+    width: 100%;
+    padding: 6px 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 13px;
+    box-sizing: border-box;
+}
+
+/* Checkbox inline */
+.job-form-container .checkbox-group {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+/* Image preview */
+#imagePreview {
+    width: 100%;
+    height: 100px;
+    border: 1px dashed #aaa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 8px;
+}
+
+#imagePreview img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+}
+
+/* Buttons */
+.job-form-container button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 13px;
+    transition: 0.3s;
+}
+
+#submitJobBtn {
+    background-color: #4CAF50;
+    color: white;
+}
+
+#submitJobBtn:hover {
+    background-color: #45a049;
+}
+
+#cancelJobBtn {
+    background-color: #f44336;
+    color: white;
+}
+
+#cancelJobBtn:hover {
+    background-color: #e53935;
+}
